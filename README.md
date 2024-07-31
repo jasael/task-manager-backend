@@ -5,36 +5,16 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-## Description
+## Tecnologías y Herramientas
+* node -> 20.16
+* npm -> 10.8.2
+* pnpm -> 9.4.0
+* nestjs -> 10.0.0
+* docker -> last version
+* docker compose -> last version
 
-## Installation
+## Pasos para descargar el repositorio e instalar las dependencias
 
 ```bash
 $ pnpm install
-```
-
-## Running the app
-
-```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
 ```

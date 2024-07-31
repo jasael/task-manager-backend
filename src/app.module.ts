@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CategoriesModule } from './categories/categories.module';
 import { UsersModule } from './users/users.module';
@@ -12,6 +10,7 @@ import { State } from './states/entities/state.entity';
 import { Task } from './tasks/entities/task.entity';
 import { PrioritiesModule } from './priorities/priorities.module';
 import { Priority } from './priorities/entities/priority.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -30,8 +29,7 @@ import { Priority } from './priorities/entities/priority.entity';
     StatesModule,
     UsersModule,
     PrioritiesModule,
+    AuthModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

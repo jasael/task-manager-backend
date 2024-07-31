@@ -1,4 +1,5 @@
 import { Category } from 'src/categories/entities/category.entity';
+import { Priority } from 'src/priorities/entities/priority.entity';
 import { State } from 'src/states/entities/state.entity';
 import { User } from 'src/users/entities/user.entity';
 import {
@@ -6,6 +7,7 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -23,6 +25,9 @@ export class Task {
   description: string;
 
   @Column()
+  delivery_date: Date;
+
+  @Column()
   category_id: number;
 
   @Column()
@@ -30,6 +35,9 @@ export class Task {
 
   @Column()
   state_id: number;
+
+  @Column()
+  priority_id: number;
 
   @CreateDateColumn()
   created_at: Date;
@@ -41,11 +49,18 @@ export class Task {
   deleted_at: Date;
 
   @ManyToOne(() => User, (user) => user.tasks)
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
   @ManyToOne(() => State, (state) => state.tasks)
+  @JoinColumn({ name: 'state_id' })
   state: State;
 
   @ManyToOne(() => Category, (category) => category.tasks)
+  @JoinColumn({ name: 'category_id' })
   category: Category;
+
+  @ManyToOne(() => Priority, (priority) => priority.tasks)
+  @JoinColumn({ name: 'priority_id' })
+  priority: Priority;
 }

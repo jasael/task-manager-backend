@@ -14,7 +14,7 @@ export class Category {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 150 })
+  @Column({ type: 'varchar', length: 150, unique: true })
   name: string;
 
   @OneToMany(() => Task, (task) => task.category)

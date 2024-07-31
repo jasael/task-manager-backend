@@ -19,12 +19,28 @@ export class UsersService {
   }
 
   findAll() {
-    return this.userRepository.find();
+    return this.userRepository.find({
+      select: {
+        id: true,
+        name: true,
+      },
+    });
   }
 
   findOne(id: number) {
+    return this.userRepository.findOne({
+      where: {
+        id,
+      },
+      select: {
+        password: false,
+      },
+    });
+  }
+
+  findByEmail(email: string) {
     return this.userRepository.findOneBy({
-      id,
+      email,
     });
   }
 
@@ -35,16 +51,6 @@ export class UsersService {
       },
       updateUserDto,
     );
-
-    if (!response.affected) {
-      throw new NotFoundException(
-        `No se ha encontrado el usuario con id: ${id}`,
-      );
-    }
-  }
-
-  async remove(id: number) {
-    const response = await this.userRepository.softDelete(id);
 
     if (!response.affected) {
       throw new NotFoundException(
